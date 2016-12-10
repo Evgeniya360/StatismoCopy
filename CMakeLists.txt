@@ -116,8 +116,6 @@ include_directories( ${Boost_INCLUDE_DIRS} )
 link_directories( ${Boost_LIBRARY_DIRS} )
 add_definitions( -DBOOST_THREAD_VERSION=3 -DBOOST_FILESYSTEM_VERSION=3 )
 
-find_package( HDF5  COMPONENTS C CXX)
-include_directories( ${HDF5_INCLUDE_DIRS} )
 
 if(WIN32)
   # On Windows, we can only build static libraries, as the dynamic libraries would be
@@ -127,17 +125,16 @@ if(WIN32)
   set(statismo_LIB_TYPE STATIC)
 endif()
 
-foreach( _library ${HDF5_LIBRARIES} )
-  get_filename_component( _tempDir${_library} ${_library} PATH )
-  list( APPEND HDF5_LIBRARY_DIR ${_tempDir${_library}} )
-endforeach()
-
 option( ITK_SUPPORT "Build ITK Support" ON )
 
 if( ${ITK_SUPPORT} MATCHES "ON" )
-  find_package( ITK REQUIRED )
+  find_package( ITK 4.7 REQUIRED )
   include( ${ITK_USE_FILE} )
-endif()
+  set(HDF5_LIBRARIES itkhdf5 itkhdf5_cpp)
+
+   add_definitions(-DSTATISMO_ITK_SUPPORT)
+
+ endif()
 
 option( VTK_SUPPORT "Build VTK Support" ON )
 
@@ -191,7 +188,9 @@ if( ${VTK_SUPPORT} )
 endif()
 
 if( ${ITK_SUPPORT} )
-  set( CONF_INCLUDE_DIRS "${CONF_INCLUDE_DIRS}" "${statismo_SOURCE_DIR}/modules/ITK/include" )
+  set( CONF_INCLUDE_DIRS "${CONF_INCLUDE_DIRS}"
+    "${statismo_SOURCE_DIR}/modules/ITK/include"
+    "${statismo_SOURCE_DIR}/modules/ITK/cli/utils" )
 endif()
 
 configure_file( ${statismo_SOURCE_DIR}/statismoConfig.cmake.in

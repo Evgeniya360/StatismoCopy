@@ -45,7 +45,7 @@
 #include <memory>
 
 #include "CommonTypes.h"
-#include "H5Cpp.h"
+#include "StatismoH5Cpp.h"
 
 namespace statismo {
 

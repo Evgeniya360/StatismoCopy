@@ -40,7 +40,7 @@
 
 #include "statismoITKConfig.h" // this needs to be the first include
 
-#include <H5Cpp.h>
+#include "StatismoH5Cpp.h"
 
 #include <itkObject.h>
 #include <itkImage.h>

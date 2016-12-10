@@ -39,7 +39,7 @@
 #ifndef vtkUnstructuredGridREPRESENTER_H_
 #define vtkUnstructuredGridREPRESENTER_H_
 
-#include <H5Cpp.h>
+#include "StatismoH5Cpp.h"
 
 #include <vtkLandmarkTransform.h>
 #include <vtkSmartPointer.h>

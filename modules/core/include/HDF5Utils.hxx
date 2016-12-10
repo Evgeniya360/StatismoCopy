@@ -47,7 +47,7 @@
 
 #include "CommonTypes.h"
 #include "Exceptions.h"
-#include "H5Cpp.h"
+#include "StatismoH5Cpp.h"
 
 namespace statismo {
 

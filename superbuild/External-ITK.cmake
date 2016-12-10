@@ -33,7 +33,7 @@ endif()
 ExternalProject_Add(ITK
   DEPENDS ${ITK_DEPENDENCIES}
   GIT_REPOSITORY ${git_protocol}://itk.org/ITK.git
-  GIT_TAG v4.5.0
+  GIT_TAG v4.9.1
   SOURCE_DIR ITK
   BINARY_DIR ITK-build
   UPDATE_COMMAND ""
@@ -50,9 +50,9 @@ ExternalProject_Add(ITK
     -DModule_ITKReview:BOOL=ON
     -DITK_LEGACY_REMOVE:BOOL=ON
     -DCMAKE_INSTALL_PREFIX:PATH=${INSTALL_DEPENDENCIES_DIR}
-    -DITK_USE_SYSTEM_HDF5:BOOL=ON
+    -DITK_USE_SYSTEM_HDF5:BOOL=OFF
     -DHDF5_DIR:PATH=${HDF5_DIR}
     ${_vtkoptions}
 )
 
-set( ITK_DIR ${INSTALL_DEPENDENCIES_DIR}/lib/cmake/ITK-4.5/ )
+set( ITK_DIR ${INSTALL_DEPENDENCIES_DIR}/lib/cmake/ITK-4.9/ )

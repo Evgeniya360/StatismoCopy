@@ -41,6 +41,7 @@ endif()
 if( ITK_SUPPORT )
   set( ITK_DIR @ITK_DIR@ )
   find_package( ITK )
+  add_definitions("-DSTATISMO_ITK_SUPPORT")
 endif()
 
 set( statismo_LIBRARIES "@statismo_LIBRARIES@" )
